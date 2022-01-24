@@ -1,10 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
+const Valid = styled.text`
+p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  max-width: 38px;
+}
+`
 
 const CardMonthYear = (props) => {
   return (
-    <div>
+    <Valid>
       <p>{props.validDate}</p>
-    </div>
+    </Valid>
   )
 }
 
