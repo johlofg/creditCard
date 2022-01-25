@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'
+import styled from 'styled-components'
+import { useSelector } from 'react-redux'
 
 const Number = styled.text`
   font-family: monospace;
@@ -12,10 +13,12 @@ const Number = styled.text`
   }
 `
 
-const CardNumber = (props) => {
+const CardNumber = () => {
+  const visualCardNumber = useSelector(store => store.creditcard.number)
+
   return (
     <Number>
-      <p>{props.cardnumber}</p>
+      <p>{visualCardNumber}</p>
     </Number>
   )
 }

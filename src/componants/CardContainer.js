@@ -25,11 +25,11 @@ const CreditCard = styled.div`
 const CardContainer = (props) => {
   return (
     <CreditCard>
-      <CardBankName bank={props.bank} />
+      <CardBankName />
       <CardType />
-      <CardNumber cardnumber={props.cardnumber} />
-      <CardMonthYear validDate={props.validDate} />
-      <CardholderName name={props.name} />
+      <CardNumber  />
+      <CardMonthYear />
+      <CardholderName />
     </CreditCard>
   )
 }

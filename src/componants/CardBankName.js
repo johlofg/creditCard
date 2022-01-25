@@ -1,9 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux'
 
-const CardBankName = (props) => {
+const CardBankName = () => {
+  const visualBank = useSelector(store => store.creditcard.bank)
+
   return (
     <div>
-      <p>{props.bank}</p>
+      <p>{visualBank}</p>
     </div>
   )
 }

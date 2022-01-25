@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux'
+
 const Valid = styled.text`
 p {
   white-space: nowrap;
@@ -9,10 +11,12 @@ p {
 }
 `
 
-const CardMonthYear = (props) => {
+const CardMonthYear = () => {
+  const visualValidDate = useSelector(store => store.creditcard.validDate)
+
   return (
     <Valid>
-      <p>{props.validDate}</p>
+      <p>{visualValidDate}</p>
     </Valid>
   )
 }

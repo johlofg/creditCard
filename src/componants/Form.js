@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch} from 'react-redux'
 import styled from 'styled-components';
 
+import creditcard from 'reducer/creditcard';
 import CardContainer from 'componants/CardContainer'
+
 
 const Main = styled.div`
 display: flex;
-flex-direction: row;
+flex-direction: column;
 align-items: center;
 `
 
@@ -25,39 +28,39 @@ button:hover {
 `
 
 const Input = styled.input`  
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
-  width: 300px;
-  height: 20px;
-  text-align: center;
+margin-bottom: 10px;
+border-radius: 5px;
+box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+width: 300px;
+height: 20px;
+text-align: center;
 `
 
 const Select = styled.select` 
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 2px solid #000;
-  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
-  width: 300px;
-  height: 25px;
-  text-align: center;
+margin-bottom: 10px;
+border-radius: 5px;
+border: 2px solid #000;
+box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #ffffff;
+width: 300px;
+height: 25px;
+text-align: center;
 `
 
 const SubmitBtn = styled.button`
-  border: none;
-  cursor: pointer;
-  width: 25%;
-  height: 50px;
-  border-radius: 7px; 
-  font-size: 18px;
-  font-weight: 700;
-  font-family: 'Arial', sans-serif;
-  color: #fff;
-  text-align: center;
-  background: #2c2c2c;
-  box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
-  margin-bottom: 24px;
-  transition: .5s;
+border: none;
+cursor: pointer;
+width: 25%;
+height: 50px;
+border-radius: 7px; 
+font-size: 18px;
+font-weight: 700;
+font-family: 'Arial', sans-serif;
+color: #fff;
+text-align: center;
+background: #2c2c2c;
+box-shadow: 3px 3px 8px #b1b1b1, -3px -3px 8px #ffffff;
+margin-bottom: 24px;
+transition: .5s;
 `
 
 const Label = styled.label`
@@ -69,17 +72,24 @@ const Form = () => {
   const [cardValid, setCardValid] = useState('')
   const [cardBank, setCardBank] = useState('')
 
+  const dispatch = useDispatch()
+  
   const onHandelcardholderName = (event) => {
     setCardholder(event.target.value)
   }
-
-  const onHandleCardNumber = (event) => {
-    setCardNumber(event.target.value)
+  
+  const onHandleCardNumber = (event) => {  
+    setCardNumber(event.target.value)  
   }
-
+  
   const onHandleCardValid = (event) => {
     setCardValid(event.target.value)
   }
+  
+  dispatch(creditcard.actions.setNumber(cardNumber))
+  dispatch(creditcard.actions.setValidDate(cardValid))
+  dispatch(creditcard.actions.setName(cardholder))
+  dispatch(creditcard.actions.setBank(cardBank))
 
   return (
     <Main>
@@ -102,7 +112,7 @@ const Form = () => {
             value={cardNumber}
             onChange={onHandleCardNumber}
             placeholder="Credit Card Number"
-            maxLength="16" />
+            maxLength='16' />
           <Label>Valid</Label>
           <Input
             type="number"
@@ -112,7 +122,7 @@ const Form = () => {
             maxLength="4" />
           <Label>Bank</Label>
           <Select
-            value={cardBank}
+            value={cardBank}            
             onChange={(event) => setCardBank(event.target.value)}>
             <optgroup label="Bank">
               <option value="" disabled defaultValue>Select Bank</option>

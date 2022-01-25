@@ -1,15 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux'
 
 const Cardholder = styled.text`
   font-family: monospace;
   font-size: 18px;
   `
 
-const CardholderName = (props) => {
+const CardholderName = () => {
+  const visualCardName = useSelector(store => store.creditcard.name)
+
   return (
     <Cardholder>
-      <p>{props.name}</p>
+      <p>{visualCardName}</p>
     </Cardholder>
   )
 }
