@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux'
 
 const CardBankName = () => {
-  const visualBank = useSelector(store => store.creditcard.bank)
+  const visualBank = useSelector((store) => store.creditcard.bank)
 
   return (
     <div>

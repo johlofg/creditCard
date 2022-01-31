@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components';
 
 import creditcard from 'reducer/creditcard';
 import CardContainer from 'componants/CardContainer'
-
 
 const Main = styled.div`
 display: flex;
@@ -24,8 +23,7 @@ justify-content: center;
 button:hover {
   background: #fff;
   color: #000;
-}
-`
+}`
 
 const Input = styled.input`  
 margin-bottom: 10px;
@@ -73,19 +71,19 @@ const Form = () => {
   const [cardBank, setCardBank] = useState('')
 
   const dispatch = useDispatch()
-  
+
   const onHandelcardholderName = (event) => {
     setCardholder(event.target.value)
   }
-  
-  const onHandleCardNumber = (event) => {  
-    setCardNumber(event.target.value)  
+
+  const onHandleCardNumber = (event) => {
+    setCardNumber(event.target.value)
   }
-  
+
   const onHandleCardValid = (event) => {
     setCardValid(event.target.value)
   }
-  
+
   dispatch(creditcard.actions.setNumber(cardNumber))
   dispatch(creditcard.actions.setValidDate(cardValid))
   dispatch(creditcard.actions.setName(cardholder))
@@ -112,7 +110,7 @@ const Form = () => {
             value={cardNumber}
             onChange={onHandleCardNumber}
             placeholder="Credit Card Number"
-            maxLength='16' />
+            maxLength="16" />
           <Label>Valid</Label>
           <Input
             type="number"
@@ -122,7 +120,7 @@ const Form = () => {
             maxLength="4" />
           <Label>Bank</Label>
           <Select
-            value={cardBank}            
+            value={cardBank}
             onChange={(event) => setCardBank(event.target.value)}>
             <optgroup label="Bank">
               <option value="" disabled defaultValue>Select Bank</option>
